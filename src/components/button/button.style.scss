@@ -1,0 +1,69 @@
+@import '../../styles/mixins';
+
+.btn-small {
+  background-color: var(--color-main--1);
+  padding: 5px 15px;
+  color: var(--color-main--2);
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--color-main--1);
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+.btn-filter,
+.reset-btn {
+  background-color: var(--color-light--2);
+  border: 2px solid var(--color-light--2);
+  color: var(--color-main--1);
+  cursor: pointer;
+  margin-right: 5px;
+  padding: 8px 15px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: var(--color-light--1);
+    border: 2px solid var(--color-light--1);
+  }
+
+  &.active {
+    background-color: var(--color-main--1);
+    border: 2px solid var(--color-main--1);
+    color: var(--color-main--2);
+  }
+
+  @include device-size(mobile) {
+    width: 50%;
+    &:nth-child(even) {
+      margin-left: 5px;
+    }
+    &:nth-child(odd) {
+      margin-right: 5px;
+    }
+  }
+}
+
+.reset-btn {
+  background-color: var(--color-deleted--1);
+  border-color: var(--color-deleted--1);
+  color: var(--color-main--2);
+  margin-left: 5px;
+  position: absolute;
+  right: -2px;
+  top: 2px;
+  height: 38px;
+
+  @include device-size(mobile) {
+    width: auto;
+  }
+
+  &:hover {
+    background-color: var(--color-deleted--2);
+    border-color: var(--color-deleted--2);
+  }
+}

@@ -1,0 +1,45 @@
+.add-product-form {
+  label {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 100;
+  }
+  input {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    height: 35px;
+    padding: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 100;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--color-light--1);
+    outline: none;
+  }
+  textarea {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    padding: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 100;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--color-light--1);
+    outline: none;
+  }
+
+  .submit-new-btn {
+    background-color: var(--color-main--1);
+    padding: 10px 20px;
+    color: var(--color-main--2);
+    cursor: pointer;
+    box-shadow: none;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: var(--color-added--1);
+      border: 2px solid var(--color-added--1);
+    }
+  }
+}

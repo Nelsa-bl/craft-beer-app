@@ -1,0 +1,61 @@
+@import '../../styles/mixins';
+
+.navigation {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  .logo-container {
+    padding: 5px 10px 10px 0;
+    display: flex;
+    margin-left: -12px;
+  }
+
+  .logo-name {
+    font-family: var(--font-family--cursive), sans-serif;
+    padding: 15px 0;
+    font-size: 22px;
+  }
+
+  .nav-links-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .nav-link {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .home-link {
+      @include device-size(mobile) {
+        display: none;
+      }
+    }
+  }
+
+  .logo {
+    width: 50px;
+  }
+
+  .add-beer-link {
+    margin-left: 2px;
+
+    @include device-size(mobile) {
+      display: none;
+    }
+  }
+
+  .add-beer-icon {
+    width: 18px;
+    position: relative;
+    top: 3px;
+    margin-left: 5px;
+
+    @include device-size(mobile) {
+      width: 25px;
+    }
+  }
+}

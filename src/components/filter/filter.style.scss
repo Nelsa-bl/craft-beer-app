@@ -1,0 +1,24 @@
+@import '../../styles/mixins';
+
+.filter-container {
+  display: flex;
+  margin-top: -36px;
+  position: relative;
+  width: max-content;
+  top: -22px;
+
+  @include device-size(mobile) {
+    width: 100%;
+    display: flex;
+    margin-top: -10px;
+    top: 0;
+    margin-bottom: 20px;
+  }
+
+  @include device-size(tablet) {
+    display: flex;
+    margin-top: -10px;
+    top: 0;
+    margin-bottom: 20px;
+  }
+}

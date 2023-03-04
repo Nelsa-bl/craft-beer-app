@@ -1,0 +1,18 @@
+@import '../../styles/mixins';
+
+.add-product-container {
+  width: 500px;
+  margin: auto;
+  border: 1px solid var(--color-light--1);
+  background-color: var(--color-light--3);
+  padding: 10px 30px;
+
+  @include device-size(tablet) {
+    width: 100%;
+  }
+
+  @include device-size(mobile) {
+    width: 100%;
+    display: block;
+  }
+}

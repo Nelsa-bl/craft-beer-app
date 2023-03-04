@@ -1,0 +1,27 @@
+.comment-count {
+  position: relative;
+  margin-bottom: 15px;
+  font-family: var(--font-family--cursive), sans-serif;
+  font-size: 10px;
+  line-height: 0;
+  width: 300px;
+  background: var(--color-light--2);
+  border-radius: 32px;
+  padding: 10px;
+  text-align: center;
+  color: var(--color-main--1);
+  width: 30px;
+}
+
+.comment-count:before {
+  content: '';
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 14px solid var(--color-light--2);
+  border-right: 2px solid transparent;
+  border-top: 2px solid var(--color-light--2);
+  border-bottom: 10px solid transparent;
+  left: 6px;
+  bottom: -9px;
+}

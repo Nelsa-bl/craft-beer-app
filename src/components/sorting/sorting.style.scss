@@ -1,0 +1,52 @@
+@import '../../styles/mixins';
+
+.sorting-container {
+  margin-left: auto;
+  justify-content: flex-end;
+  display: flex;
+  margin-top: -36px;
+  position: relative;
+  width: max-content;
+  top: -15px;
+
+  @include device-size(mobile) {
+    width: 100%;
+    display: block;
+    margin-top: -5px;
+    top: 0;
+    margin-bottom: 5px;
+  }
+
+  label {
+    margin-right: 5px;
+    font-weight: 100;
+
+    @include device-size(mobile) {
+      display: none;
+    }
+  }
+
+  select {
+    border: 1px solid var(--color-light--2);
+    border-radius: 4px;
+    color: var(--color-dark--2);
+    font-size: 12px;
+    height: 36px;
+    padding: 8px 12px;
+    width: 200px;
+    outline: none;
+    position: relative;
+    top: -7px;
+
+    @include device-size(mobile) {
+      width: 100%;
+    }
+
+    /* Style the options */
+    option {
+      color: var(--color-dark--2);
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+  }
+}

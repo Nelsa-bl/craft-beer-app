@@ -1,0 +1,60 @@
+.confirmation-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-main--2);
+    padding: 30px;
+  }
+
+  p {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .modal-buttons {
+    justify-content: center;
+    display: flex;
+  }
+
+  .delte-btn {
+    background-color: var(--color-deleted--1);
+    border: 2px solid var(--color-deleted--1);
+    padding: 10px 20px;
+    color: var(--color-main--2);
+    cursor: pointer;
+    box-shadow: none;
+    margin-top: 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: var(--color-deleted--2);
+      border: 2px solid var(--color-deleted--2);
+    }
+  }
+  .cancel-btn {
+    background-color: var(--color-dark--3);
+    border: 2px solid var(--color-dark--3);
+    padding: 10px 20px;
+    color: var(--color-main--2);
+    cursor: pointer;
+    box-shadow: none;
+    margin-top: 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: var(--color-main--1);
+      border: 2px solid var(--color-main--1);
+    }
+  }
+}
