@@ -223,3 +223,11 @@ h3 {
     }
   }
 }
+
+.error {
+  border-color: var(--color-deleted--2) !important;
+
+  &::placeholder {
+    color: var(--color-deleted--2) !important;
+  }
+}

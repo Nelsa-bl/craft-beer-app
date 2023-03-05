@@ -5,6 +5,8 @@ import {
   ChangeEventHandler,
 } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 // Import components
 import FavouritesButton from '../favourites-button/favourites-button.component';
 import Comments from '../comments/comments.component';
@@ -14,6 +16,7 @@ import FoodPairings from '../food-pairings/food-pairings.component';
 import UploadImage from '../upload-image/upload-image.component';
 import ConfirmationBox from '../confirmation-box/confirmation-box.component';
 import ConfirmationModal from '../confimation-modal/confimation-modal.comonent';
+import WarningBox from '../warning-box/warning-box.component';
 
 import { DEFAULT_IMAGE_URL } from '../../utils/constants/constants';
 
@@ -61,6 +64,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const [formData, setFormData] = useState<ProductFormData>({
     name: product.name,
     tagline: product.tagline,
@@ -87,6 +92,14 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   // Handle Submit
   const handleFormSubmit: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
+
+    setFormSubmitted(true);
+
+    // If the form is invalid, return and do not submit
+    const form = event.currentTarget.form;
+    if (!form || !form.checkValidity()) {
+      return;
+    }
 
     // Update product
     const updatedProduct = {
@@ -120,6 +133,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
       first_brewed: product.first_brewed,
     });
     setIsEditing(false);
+    setFormSubmitted(false);
   };
 
   // Delete all comments
@@ -137,7 +151,19 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     removeFavorite(product);
     deleteAllProductComments();
     setIsModalOpen(false);
+
+    navigateToHome();
   };
+
+  const navigate = useNavigate();
+
+  // Navigate to home
+  const navigateToHome = () => {
+    navigate('/');
+  };
+
+  // Render the error message when the form is submitted and the name field is empty
+  const isNameInvalid = formSubmitted && formData.name.trim() === '';
 
   return (
     <div className='details-container'>
@@ -185,10 +211,15 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
                 type='text'
                 id='name'
                 name='name'
+                className={isNameInvalid ? 'error' : ''}
+                required
                 placeholder='Name of the beer'
                 value={formData.name}
                 onChange={handleInputChange}
               />
+              {isNameInvalid && (
+                <WarningBox errorMessage='Please enter a name' />
+              )}
               <label htmlFor='tagline'>Tagline:</label>
               <input
                 type='text'

@@ -81,7 +81,12 @@ const AddProductForm = () => {
       <form className='add-product-form' onSubmit={handleSubmit}>
         <label>
           Title:
-          <input placeholder='Name of the beer' type='text' ref={nameValue} />
+          <input
+            placeholder='Name of the beer'
+            required
+            type='text'
+            ref={nameValue}
+          />
         </label>
         <label>
           Tagline:

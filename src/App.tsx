@@ -16,6 +16,9 @@ const Favourites = lazy(
 const AddProduct = lazy(
   () => import('./pages/add-product/add-product.component')
 );
+const NotFoundPage = lazy(
+  () => import('./components/not-found-page/not-found-page.component')
+);
 
 // Main
 const App = () => {
@@ -27,6 +30,7 @@ const App = () => {
           <Route path='details/:id' element={<Details />} />
           <Route path='favourites' element={<Favourites />} />
           <Route path='addproduct' element={<AddProduct />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Suspense>
