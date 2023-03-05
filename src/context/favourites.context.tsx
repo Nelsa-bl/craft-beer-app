@@ -72,12 +72,12 @@ const updateFavoriteItem = (
   if (existingFavoriteItem) {
     return favoriteItem.map((favoriteItem) =>
       favoriteItem.id === productToUpdate.id
-        ? { ...productToUpdate }
+        ? { ...favoriteItem, ...productToUpdate }
         : favoriteItem
     );
   }
 
-  return [...favoriteItem, { ...productToUpdate }];
+  return favoriteItem;
 };
 
 // Context
