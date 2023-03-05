@@ -1,14 +1,15 @@
 .confirmation-box {
   position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: 1px;
   font-size: 14px;
   font-family: var(--font-family--cursive), sans-serif;
   background-color: var(--color-light--2);
   padding: 10px 20px;
   color: #fff;
-  width: 100%;
+  width: 100vw;
   text-align: center;
+  z-index: 99;
 
   .in {
     animation: fill 2s linear 1;
