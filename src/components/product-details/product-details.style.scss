@@ -29,6 +29,7 @@
 
     @include device-size(mobile) {
       margin: 0 20px;
+      max-width: none;
     }
   }
 
