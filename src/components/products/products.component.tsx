@@ -1,4 +1,4 @@
-import { useContext, useState, useCallback, useMemo, ChangeEvent } from 'react';
+import { useContext, useCallback, useMemo, ChangeEvent } from 'react';
 
 // Import Context
 import { ProductsContext } from '../../context/product.context';
@@ -22,14 +22,17 @@ import { ProductsTypes } from '../../@types/products';
 const Products = () => {
   // Product context
   const { products, isLoading } = useContext(ProductsContext);
-  // State for shearching
+  // State for searching
   const [searchQuery, setSearchQuery] = useSessionStorage<string>(
     'searchQuery',
     ''
   );
   // Default sorting values
-  const [sortBy, setSortBy] = useState<SortBy>('id');
-  const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
+  const [sortBy, setSortBy] = useSessionStorage<SortBy>('sortBy', 'id');
+  const [sortOrder, setSortOrder] = useSessionStorage<SortOrder>(
+    'sortOrder',
+    'asc'
+  );
   // State for active filter
   const [activeFilter, setActiveFilter] = useSessionStorage<
     'all' | 'createdByUser'
@@ -89,10 +92,13 @@ const Products = () => {
   ];
 
   // useCallback to handle new state
-  const handleSort = useCallback((sortBy: SortBy, sortOrder: SortOrder) => {
-    setSortBy(sortBy);
-    setSortOrder(sortOrder);
-  }, []);
+  const handleSort = useCallback(
+    (sortBy: SortBy, sortOrder: SortOrder) => {
+      setSortBy(sortBy);
+      setSortOrder(sortOrder);
+    },
+    [setSortBy, setSortOrder]
+  );
 
   // Get all products length
   const allProductsLength = useMemo(() => {
@@ -137,7 +143,12 @@ const Products = () => {
         ownProductsLength={ownProductsLength}
         checkOwnProducts={checkOwnProducts}
       />
-      <Sorting options={options} onChange={handleSort} />
+      <Sorting
+        options={options}
+        sortBy={sortBy}
+        sortOrder={sortOrder}
+        onChange={handleSort}
+      />
       {isLoading ? (
         <Spinner />
       ) : sortedProducts.length > 0 ? (

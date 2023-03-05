@@ -1,4 +1,4 @@
-import { useCallback, ChangeEvent } from 'react';
+import { useCallback, useState, useEffect, ChangeEvent } from 'react';
 
 // Import styling
 import './sorting.style.scss';
@@ -15,9 +15,13 @@ export type SortOrder = 'asc' | 'desc';
 type SortingProps = {
   options: SortingOption[];
   onChange: (sortBy: SortBy, sortOrder: SortOrder) => void;
+  sortBy: SortBy;
+  sortOrder: SortOrder;
 };
 
-const Sorting = ({ options, onChange }: SortingProps) => {
+const Sorting = ({ options, onChange, sortBy, sortOrder }: SortingProps) => {
+  const [selectValue, setSelectValue] = useState<string>('id-asc');
+
   const handleSelectChange = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
       const value = e.target.value;
@@ -36,10 +40,19 @@ const Sorting = ({ options, onChange }: SortingProps) => {
     [onChange]
   );
 
+  // Options dropdown
+  useEffect(() => {
+    setSelectValue(`${sortBy}-${sortOrder}`);
+  }, [sortBy, sortOrder]);
+
   return (
     <div className='sorting-container'>
       <label htmlFor='sort-by-select'>Sort by:</label>
-      <select id='sort-by-select' onChange={handleSelectChange}>
+      <select
+        id='sort-by-select'
+        value={selectValue}
+        onChange={handleSelectChange}
+      >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
