@@ -187,6 +187,10 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             </div>
             <span className='tagline'>{product?.tagline}</span>
             <span className='description'>{product?.description}</span>
+            <span className='first-brewed'>
+              <span>First brewed:</span>
+              {product?.first_brewed}
+            </span>
             <div className='extra-info'>
               <p className='food-parings'>Food Pairing</p>
               {product?.food_pairing.map((el, index) => (
